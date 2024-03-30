@@ -4,8 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            background-color: #8EC5FC;
+            background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+            height: 95vh;
+        }
+        .heading{
+            text-align: center;
+        }
+        .dice-img{
+            height: 200px;
+            display: block;
+            margin: 10px auto;
+        }
+        .btn{
+            padding: 10px;
+            height: 45px;
+            width: 150px;
+            font-size: 20px;
+            border-radius: 10px;
+            border: none;
+            background-color: #FF9A8B;
+            background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+            color: white;
+            box-shadow: 0 0 10px 2px  #404040;
+            display: block;
+            margin: 40px auto;
+            cursor: pointer;
+        }
+        @keyframes roll{
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        .animate{
+            animation: roll 1s infinite;
+        }
+    </style>
 </head>
 <body>
-    
+    <h1 class="heading">ROLL THE DICE</h1>
+    <img src="dice.png" id="diceImg" class="dice-img">
+
+    <button class="btn" onclick="roll()">Roll</button>
+
+    <script>
+        function roll(){
+            const min=1;
+            const max=6;
+
+            const randomNo= Math.round(Math.random() * (max-min))+min;
+            const img=document.getElementById('diceImg');
+
+            switch(randomNo){
+                case 1:
+                    img.src='1.png';
+                    break;
+                case 2:
+                    img.src='2.png';
+                    break;
+                case 3:
+                    img.src='3.png';
+                    break;    
+                case 4:
+                    img.src='4.png';
+                    break;
+                case 5:
+                    img.src='5.png';
+                    break;
+                case 6:
+                    img.src='6.png';
+                    break;       
+            }
+            img.classList.add("animate");
+
+            setTimeout(() => {
+                img.classList.remove("animate");
+            }, 1000);
+        }
+    </script>
 </body>
 </html>
